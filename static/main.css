@@ -1,3 +1,21 @@
+/* PALETTE OF CFG colors website
+
+color: #333333; GRAY
+    font-family: 'Raleway', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2em;
+
+color: rgb(76, 201, 164) TURQUOISE
+
+main gry: #222222 / #2d2d2d
+some text : #a1a1a1
+TURQUOISE: #61c9a4 / #61c9a4
+pinky color logo: #c53540
+more pinky for details: #e05c5c
+google fonts: Lobster
+*/
+
 body {
   background: #fafafa;
   color: #333333;

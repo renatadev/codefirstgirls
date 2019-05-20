@@ -41,8 +41,29 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %} <!-- This will allow us to get the success flash messages with bootstrap class -->
+            {% if messages %}
+              {% for category, message in messages %} <!-- loop our messages -->
+                <div class="alert alert-{{ category }}"> <!-- adding our value: success, etc -->
+                  {{ message }} <!-- finally print our message here -->
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           {% block content %}{% endblock %}
         </div>
+        <div class="col-md-4">
+        <div class="content-section">
+          <h3>Coming up...</h3>
+          <p class='text-muted'>Take a look at our upcoming events:
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Agile MasterClass at Aviva Digital Garage</li>
+              <li class="list-group-item list-group-item-light">Hack Your Tech Career with Bank of America Merrill Lynch</li>
+              <li class="list-group-item list-group-item-light">Fintech Mentoring Programme Dublin 2019</li>
+            </ul>
+          </p>
+        </div>
+      </div>
       </div>
     </main>
 
