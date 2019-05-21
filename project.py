@@ -1,14 +1,13 @@
 from datetime import datetime
 from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
-from database import SQLAlchemy
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "f8735c65fe944de7878ac9f454e8346b" #When we use wtf forms we need to set a secret key (random charac) to protect against modifying cookies, attacks, etc.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' #path to our db file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app) #db instance
+db=SQLAlchemy(app) #db instance
 
 #class models that are the database structure (each class its going to be its own table in the db):
 #class for user profile
