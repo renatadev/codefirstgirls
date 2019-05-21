@@ -1,5 +1,10 @@
 from datetime import datetime
 from project import db
+from project import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 #class models that are the database structure (each class its going to be its own table in the db):
 #class for user profile
