@@ -1,5 +1,5 @@
 from datetime import datetime
-from flaskblog import db
+from project import db
 
 #class models that are the database structure (each class its going to be its own table in the db):
 #class for user profile
