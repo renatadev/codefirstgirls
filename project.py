@@ -14,7 +14,7 @@ db = SQLAlchemy(app) #db instance
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True) #unique id for an user
     username = db.Column(db.String(20), unique=True, nullable=False)
-    username = db.Column(db.String(120), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="default.jpg") #default image
     password = db.Column(db.String(60), nullable=False) #not unique because users can have the same password
     posts = db.relationship("Post", backref="author", lazy=True) # lazy=True loads the data from the db when necessary
