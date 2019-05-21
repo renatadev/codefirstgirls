@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "f8735c65fe944de7878ac9f454e8346b" #When we use wtf forms we need to set a secret key (random charac) to protect against modifying cookies, attacks, etc.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' #path to our db file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db=SQLAlchemy(app) #db instance
+db = SQLAlchemy(app) #db instance
 
 #class models that are the database structure (each class its going to be its own table in the db):
 #class for user profile
@@ -19,9 +19,12 @@ class User(db.Model):
     password = db.Column(db.String(60), nullable=False) #not unique because users can have the same password
     posts = db.relationship("Post", backref="author", lazy=True) # lazy=True loads the data from the db when necessary
 
-def __repr__(self): #magic method
+def __repr__(self):
+        return '<User %r>' % self.username
+
+#def __repr__(self): #magic method
     #return "User('{self.username}, '{self.email}', '{self.image_file}')"
-    return User(self.username), User(self.email), User(self.image_file)
+#    return User(self.username), User(self.email), User(self.image_file)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
