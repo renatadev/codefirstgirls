@@ -21,6 +21,9 @@ posts = [
 
 #Decorators (routes)
 @app.route("/")
+def index():
+    return render_template("index.html", title="Welcome to CF:Alumni")
+
 @app.route("/home")
 def home():
     return render_template("home.html", posts=posts) #access our data in our template
