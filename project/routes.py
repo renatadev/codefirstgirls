@@ -1,5 +1,5 @@
-from flask import render_template, url_for, flash, redirect
-from project import app
+from flask import render_template, url_for, flash, redirect, request
+from project import app, db, bcrypt
 from project.forms import RegistrationForm, LoginForm
 from project.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
@@ -35,8 +35,8 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        pw_hash = bcrypt.generate_password_hash(form.password.data) #to encrypt our users passwords and keep their profiles secure
-        user = User(username=form.username.data, email=form.email.data, password=pw_hash)
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user) #adding our user to our db
         db.session.commit() #commiting the changes to add our user to the db
         flash('Your account has been created! You are now able to log in', 'success')
