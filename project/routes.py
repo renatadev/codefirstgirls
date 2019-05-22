@@ -35,8 +35,8 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data) #to encrypt our users passwords and keep their profiles secure
-        user = Username(username=form.username.data, email=form.email.data, password=hashed_password)
+        pw_hash = bcrypt.generate_password_hash(form.password.data) #to encrypt our users passwords and keep their profiles secure
+        user = User(username=form.username.data, email=form.email.data, password=pw_hash)
         db.session.add(user) #adding our user to our db
         db.session.commit() #commiting the changes to add our user to the db
         flash('Your account has been created! You are now able to log in', 'success')
@@ -45,7 +45,7 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-     if current_user.is_authenticated:
+    if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
@@ -62,7 +62,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
-
 
 @app.route("/account")
 @login_required
