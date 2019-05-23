@@ -15,7 +15,7 @@ def index():
 @app.route("/home")
 @login_required
 def home():
-    posts = Post.query.all()
+    posts = Post.query.all() #To grab all the posts from our db and put them in our home page
     return render_template("home.html", posts=posts)#access our data in our template
 
 @app.route("/about")
@@ -104,7 +104,7 @@ def new_post():
 
 @app.route("/post/<int:post_id>")
 def post(post_id):
-    post = Post.query.get_or_404(post_id)
+    post = Post.query.get_or_404(post_id) #to get a post with ID otherwise we run the error page
     return render_template('post.html', title=post.title, post=post)
 
 
@@ -121,7 +121,7 @@ def update_post(post_id):
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('post', post_id=post.id))
-    elif request.method == 'GET':
+    elif request.method == 'GET': #current post data so it can be updated 
         form.title.data = post.title
         form.content.data = post.content
     return render_template('create_post.html', title='Update Post',
