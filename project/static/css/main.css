@@ -28,12 +28,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
-.navbar {
+.bgdark {
   background-color: #222;
-}
-
-.bg-steel {
-  background-color: #222222;
 }
 
 .site-header .navbar-nav .nav-link {
