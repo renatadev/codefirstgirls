@@ -15,7 +15,9 @@ pinky color logo: #c53540
 more pinky for details: #e05c5c
 google fonts: Lobster
 */
-
+html {
+  font-family: 'Questrial', sans-serif;
+}
 body {
   background: #fafafa;
   color: #333333;
@@ -26,8 +28,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
+.navbar {
+  background-color: #222;
+}
+
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #222222;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -40,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
+  border: 2px solid #ffffff;
 }
 
 .content-section {

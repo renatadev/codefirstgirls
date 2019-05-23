@@ -15,7 +15,8 @@ def index():
 @app.route("/home")
 @login_required
 def home():
-    posts = Post.query.all() #To grab all the posts from our db and put them in our home page
+    page = request.args.get('page', 1, type=int) #default page
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=1) #To grab all the posts from our db and put them in our home page
     return render_template("home.html", posts=posts)#access our data in our template
 
 @app.route("/about")
@@ -121,7 +122,7 @@ def update_post(post_id):
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('post', post_id=post.id))
-    elif request.method == 'GET': #current post data so it can be updated 
+    elif request.method == 'GET': #current post data so it can be updated
         form.title.data = post.title
         form.content.data = post.content
     return render_template('create_post.html', title='Update Post',
@@ -138,3 +139,13 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user_posts.html', posts=posts, user=user)
