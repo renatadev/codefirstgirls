@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg') #default image
     password = db.Column(db.String(60), nullable=False) #not unique because users can have the same password
     posts = db.relationship('Post', backref='author', lazy=True) # lazy=True loads the data from the db when necessary
+
     def __repr__(self):
             return '<User %r>' % self.username
 
@@ -28,7 +29,6 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) #coordinated universal time
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)#relationship to our user model
-
 
     def __repr__(self):
         return Post({self.title}, {self.date_posted})
