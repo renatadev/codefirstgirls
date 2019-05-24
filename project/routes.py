@@ -16,7 +16,7 @@ def index():
 @login_required
 def home():
     page = request.args.get('page', 1, type=int) #default page
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=1) #To grab all the posts from our db and put them in our home page
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5) #To grab all the posts from our db and put them in our home page
     return render_template("home.html", posts=posts)#access our data in our template
 
 @app.route("/about")
