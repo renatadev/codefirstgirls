@@ -2,7 +2,7 @@ import os
 import secrets
 from PIL import Image #Pillow package to resize our profile image before saving it
 from flask import render_template, url_for, flash, redirect, request, abort
-from project import app, db, bcrypt
+from project import app, db, bcrypt, mail
 from project.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from project.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
@@ -154,12 +154,13 @@ def user_posts(username):
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender='noreply@demo.com',
+                  sender='renatajarmova@gmail.com',
                   recipients=[user.email])
-    msg.body = f'''To reset your password, visit the following link:
-{url_for('reset_token', token=token, _external=True)}
+    msg.body = '''To reset your password, visit the following link:
+{0}
+
 If you did not make this request then simply ignore this email and no changes will be made.
-'''
+'''.format({url_for('reset_token', token=token, _external=True)})
     mail.send(msg)
 
 
@@ -174,7 +175,6 @@ def reset_request():
         flash('An email has been sent with instructions to reset your password.', 'info')
         return redirect(url_for('login'))
     return render_template('reset_request.html', title='Reset Password', form=form)
-
 
 @app.route("/reset_password/<token>", methods=['GET', 'POST'])
 def reset_token(token):
