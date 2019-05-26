@@ -154,7 +154,7 @@ def user_posts(username):
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender='renatajarmova@gmail.com',
+                  sender='rvalka@hotmail.com',
                   recipients=[user.email])
     msg.body = '''To reset your password, visit the following link:
 {0}
