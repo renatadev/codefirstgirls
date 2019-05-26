@@ -16,3 +16,4 @@ Flask-WTF==0.14.2
 bcrypt==3.1.6
 Flask-Heroku==0.1.9
 itsdangerous==1.1.0
+Flask-Mail==0.9.1
