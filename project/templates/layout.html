@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/minilogo.png') }}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -22,7 +24,8 @@
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" href="/">
-            <img alt="CF:G" src="static/profile_pics/logo.png" width="200"/>
+            <!--<img alt="CF:G" src="static/profile_pics/small-logo.png" width="200"/>-->
+            <img alt="CF:G" src="{{ url_for('static', filename='images/small-logo.png') }}" height="40"/>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
