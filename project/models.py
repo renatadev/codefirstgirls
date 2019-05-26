@@ -1,5 +1,6 @@
 from datetime import datetime
-from project import db, login_manager
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from project import db, login_manager, app
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -15,6 +16,19 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg') #default image
     password = db.Column(db.String(60), nullable=False) #not unique because users can have the same password
     posts = db.relationship('Post', backref='author', lazy=True) # lazy=True loads the data from the db when necessary
+
+    def get_reset_token(self, expires_sec=1800):
+        s = Serializer(app.config['SECRET_KEY'], expires_sec)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+
+    @staticmethod #with this method we tell python to not expect the self as an arguments, but only token
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
 
     def __repr__(self):
             return '<User %r>' % self.username
