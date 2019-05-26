@@ -1,5 +1,6 @@
 import os
 import secrets
+import requests
 from PIL import Image #Pillow package to resize our profile image before saving it
 from flask import render_template, url_for, flash, redirect, request, abort
 from project import app, db, bcrypt, mail
@@ -153,15 +154,19 @@ def user_posts(username):
 
 def send_reset_email(user):
     token = user.get_reset_token()
-    msg = Message('Password Reset Request',
-                  sender='rvalka@hotmail.com',
-                  recipients=[user.email])
-    msg.body = '''To reset your password, visit the following link:
-{0}
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox8e73e92f858d45558f00766ac99f3953.mailgun.org/messages",
+        auth=("api", "3757d8dc4e7ea259457ee79e64f5768d-e566273b-a504e139"),
+        data={"from": "Excited User <mailgun@sandbox8e73e92f858d45558f00766ac99f3953.mailgun.org>",
+              "to": [user.email],
+              "subject": "Password Reset Request",
+              "text": '''To reset your password, visit the following link:
+          {}
 
-If you did not make this request then simply ignore this email and no changes will be made.
-'''.format({url_for('reset_token', token=token, _external=True)})
-    mail.send(msg)
+          If you did not make this request then simply ignore this email and no changes will be made.
+          '''.format({url_for("reset_token", token=token, _external=True)}) })
+
+    send_reset_email(user)
 
 
 @app.route("/reset_password", methods=['GET', 'POST'])
@@ -170,6 +175,8 @@ def reset_request():
         return redirect(url_for('home'))
     form = RequestResetForm()
     if form.validate_on_submit():
+        form_data = request.form
+        email = form_data["email"]
         user = User.query.filter_by(email=form.email.data).first()
         send_reset_email(user)
         flash('An email has been sent with instructions to reset your password.', 'info')
