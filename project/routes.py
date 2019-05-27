@@ -26,6 +26,12 @@ def home():
 def resources():
     return render_template("resources.html", title="Resources")
 
+@app.route("/updates")
+@login_required
+def updates():
+    return render_template("updates.html", title="Keep Updated")
+
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:

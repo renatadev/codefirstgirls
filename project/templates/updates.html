@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<style type="text/css">
+  a {
+    color: #c53540;
+  }
+
+  a:hover {
+    color: #61c9a4;
+  }
+  span, .rosa {
+    color: #c53540;
+  }
+  #updates {
+    padding-top: 30px;
+  }
+
+</style>
+<section id="updates">
+    <div class="container-fluid text-center align-self-center justify-content-center" style="height:100%;">
+        <br><h1>Let's keep <span class="rosa"> updated</span>!</h1>
+        <p>Check out the upcoming CodeFirst:Girls' events, workshops, courses, tweets and so much more...</p><br><br>
+    </div>
+  </section>
+
+<section id="events">
+<div class="row">
+  <!-- Facebook timeline -->
+  <div class="col-md-4 text-center img-fluid">
+    <div class="fb-page" height="900" data-href="https://www.facebook.com/codefirstgirls/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/codefirstgirls/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/codefirstgirls/">Code First: Girls</a></blockquote></div>
+  </div><br><br><br>
+
+  <!-- Upcoming events -->
+  <div class="col-md-4 text-center img-fluid">
+    <div class="content-section">
+      <h3>Coming up...</h3>
+      <p class='text-muted'>Take a look at our upcoming events:
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light"><a href="https://www.eventbrite.co.uk/e/agile-masterclass-tickets-61588944190" target="_blank">Agile MasterClass at Aviva Digital Garage</a><br><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2802.3299850900194!2d-0.0828354488065825!3d51.52765370965101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cbae77ef619%3A0x395f487a33efff76!2sAviva+Digital+Garage!5e0!3m2!1sen!2suk!4v1558987273685!5m2!1sen!2suk" width="200" height="200" frameborder="0" style="border:0" allowfullscreen></iframe> </li>
+          <li class="list-group-item list-group-item-light"><a href="https://www.eventbrite.co.uk/e/hack-your-tech-career-with-bank-of-america-merrill-lynch-tickets-61937725404" target="_blank">Hack Your Tech Career with Bank of America Merrill Lynch <img class="img-fluid" src="https://www.bofaml.com/content/dam/boamlimages/images/bofaml-og-logo.jpg"></a></li>
+          <li class="list-group-item list-group-item-light"><a href="https://www.codefirstgirls.org.uk/conference19.html" target="_blank">The CF:G Annual Conference</a><br><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9932.580316476873!2d-0.1365412!3d51.5105543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa5268dbccf44dd12!2sTwitter!5e0!3m2!1sen!2suk!4v1558988435984!5m2!1sen!2suk" width="200" height="200" frameborder="0" style="border:0" allowfullscreen></iframe></li>
+        </ul>
+      </p>
+    </div>
+  </div><br><br><br>
+
+  <!-- Twitter feed -->
+  <div class="col-md-4 text-center img-fluid">
+    <a class="twitter-timeline" data-theme="light" height="900" data-link-color="#E81C4F" href="https://twitter.com/CodeFirstGirls?ref_src=twsrc%5Etfw">Tweets by CodeFirstGirls</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div><br><br><br>
+
+</div>
+</section>
+{% endblock content %}
