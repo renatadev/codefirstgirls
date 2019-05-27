@@ -21,9 +21,10 @@ def home():
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5) #To grab all the posts from our db and put them in our home page
     return render_template("home.html", posts=posts)#access our data in our template
 
-@app.route("/about")
-def about():
-    return render_template("about.html", title="About")
+@app.route("/resources")
+@login_required
+def resources():
+    return render_template("resources.html", title="Resources")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
