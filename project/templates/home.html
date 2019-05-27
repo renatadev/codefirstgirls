@@ -1,6 +1,6 @@
 {% extends "layout.html" %} <!-- using up the layout file -->
 {% block content %}
-    {% for post in posts.items %} <!-- passing our posts -->
+    {% for post in posts.items %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/') + post.author.image_file }}">
           <div class="media-body">
