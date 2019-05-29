@@ -54,7 +54,12 @@
         #index h1 {
           font-size: 50px;
         }
-
+        .bg-parallax {
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          background-attachment: fixed;
+        }
         a h3 {
           color: #61c9a4;
         }
@@ -122,7 +127,7 @@
           {% block content %}{% endblock %}
       </main>
 
-  <section id="resources" class="text-center container-fluid">
+  <section id="resources" class="text-center container-fluid bg-parallax">
       <br><h1>Let's learn to <span class="rosa">code</span>!</h1>
       <h5>From Zero to Hero</h5>
       <p>Here you'll find the best resources to Learn to Code at home</p><br><br>

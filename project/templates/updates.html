@@ -41,8 +41,11 @@
       span, .rosa {
         color: #c53540;
       }
-      #updates {
-
+      .bg-parallax {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
       }
       body, html {
         height: 100%;
@@ -118,7 +121,7 @@
           {% block content %}{% endblock %}
       </main>
 
-  <section id="updates">
+  <section id="updates" class="bg-parallax">
       <div class="container-fluid text-center align-self-center justify-content-center" style="height:100%;">
           <br><h1>Let's keep <span class="rosa"> updated</span>!</h1>
           <p>Check out the upcoming CodeFirst:Girls' events, workshops, courses, tweets and so much more...</p><br><br>

@@ -56,6 +56,12 @@
       #index h1 {
         font-size: 50px;
       }
+      .bg-parallax {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
       .fa {
       padding: 20px;
       font-size: 20px;
@@ -143,7 +149,7 @@
           {% block content %}{% endblock %}
       </main>
 
-<section id="index">
+<section id="index" class="bg-parallax">
     <div class="container-fluid text-center align-self-center justify-content-center" style="height:100%;">
         <br><h1>Welcome to CFG:Alumni</h1>
         <p>Register now and become part of our amazing community.</p>
