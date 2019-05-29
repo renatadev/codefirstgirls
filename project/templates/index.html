@@ -19,6 +19,8 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/minilogo.png') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
@@ -51,6 +53,39 @@
       }
       #index h1 {
         font-size: 50px;
+      }
+      .fa {
+      padding: 20px;
+      font-size: 20px;
+      width: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: #61c9a4;
+      }
+      .fa-heart {
+        padding: 5px;
+        padding-right: 20px;
+        font-size: 15px;
+        color: #c53540;
+      }
+      /* Add a hover effect if you want */
+      .fa:hover {
+        opacity: 0.7;
+        color: #c53540;
+      }
+      .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(35,35,35,0.95);
+        color: white;
+        text-align: center;
+      }
+      a.me {
+        color: #61c9a4;
+      }
+      #bank {
+        padding: 100px;
       }
       </style>
 </head>
@@ -124,9 +159,18 @@
 </section>
 
 <section id="footer">
-  <div class="footer">
-  <p>Coded with love by Renata</p>
-  <h3><a href="{{ url_for('thankyou') }}">x</a></h3>
+  <div class="footer"><br>
+    <p>Coded with<a href="/" class="fa fa-heart"></a>by <a  class="me" href="https://github.com/renatajarmova" target="_blank">Renata</a></p>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <a href="{{ url_for('thankyou') }}" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/RenataCodes" target="_blank" class="fa fa-twitter"></a>
+        <a href="https://www.linkedin.com/in/renata-guerra-9bbb94151"  target="_blank" class="fa fa-linkedin"></a>
+        <a href="https://github.com/renatajarmova"  target="_blank" class="fa fa-github"></a>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
