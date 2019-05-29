@@ -1,43 +1,144 @@
-{% extends "layout.html" %}
-{% block content %}
-<style type="text/css">
-  #resources {
-      text-align:center;
-      height: 100%;
-      padding-top: 30px;
-      padding-bottom: 50px;
-    }
-      a h3 {
-        color: #61c9a4;
-      }
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CodeFirstGirls:Alumni is a social platform created for all the Alumni that is currently or has already done one or two of the CF:G coding courses">
+    <meta name="keywords" content="Code First Girls, Web Application, Flask, Python, Bank of America, CodeFirstAlumni, Alumni, Students, Learn to code">
 
-      a:hover {
-        color: #c53540;
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/minilogo.png') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+    {% if title %}
+        <title>CFG:Alumni - {{ title }}</title>
+    {% else %}
+        <title>CFG:Alumni</title>
+    {% endif %}
+
+    <style type="text/css">
+      body, html {
+        height: 100%;
+        color: #818181;
       }
-      span, .rosa {
-        color: #c53540;
-      }
-</style>
-<section id="resources" class="text-center">
-    <br><h1>Let's learn to <span class="rosa">code</span>!</h1>
-    <h5>From Zero to Hero</h5>
-    <p>Here you'll find the best resources to Learn to Code at home</p><br><br>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm"><a href="https://teamtreehouse.com/" target="_blank"><h3>Tree House</h3><img class="rounded-circle" src="{{url_for('static', filename='images/tree.png')}}"/></a></div><br>
-        <div class="col-sm"><a href="https://www.coursera.org/" target="_blank"><h3>Coursera</h3><img class="rounded-circle" src="{{url_for('static', filename='images/cours.png')}}" /></a></div><br>
-        <div class="col-sm"><a href="https://www.udemy.com/" target="_blank"><h3>Udemy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/udemy.png')}}" /></div><br>
+      #resources {
+        text-align:center;
+        /*background-image:url(http://localhost:5000/static/images/bg-1.jpg);*/
+        background-image:url("static/images/fix1.jpg");
+        background-repeat:no-repeat;
+        background-size: cover;
+        height: 70%;
+        color: white;
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 1.2em;
+        padding-top: 150px;
+        padding-bottom: 100px;
+        }
+        #index h1 {
+          font-size: 50px;
+        }
+
+        a h3 {
+          color: #61c9a4;
+        }
+
+        a:hover {
+          color: #c53540;
+        }
+        span, .rosa {
+          color: #c53540;
+        }
+        #resources-icons, #wishes {
+          padding-top: 80px;
+        }
+      </style>
+</head>
+
+<body>
+  <!--Facebook JS-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
+
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img alt="CF:G" src="{{ url_for('static', filename='images/small-logo.png') }}" height="40"/>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/home">Home</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/resources">Resources</a>
+                <a class="nav-item nav-link" href="/updates">Updates</a>
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Post</a>
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+          {% with messages = get_flashed_messages(with_categories=true) %} <!-- This will allow us to get the success flash messages with bootstrap class -->
+            {% if messages %}
+              {% for category, message in messages %} <!-- loop our messages -->
+                <div class="alert alert-{{ category }}"> <!-- adding our value: success, etc -->
+                  {{ message }} <!-- finally print our message here -->
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+      </main>
+
+  <section id="resources" class="text-center container-fluid">
+      <br><h1>Let's learn to <span class="rosa">code</span>!</h1>
+      <h5>From Zero to Hero</h5>
+      <p>Here you'll find the best resources to Learn to Code at home</p><br><br>
+  </section>
+
+  <section id="resources-icons">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm"><a href="https://teamtreehouse.com/" target="_blank"><h3>Tree House</h3><img class="rounded-circle" src="{{url_for('static', filename='images/tree.png')}}"/></a></div><br>
+          <div class="col-sm"><a href="https://www.coursera.org/" target="_blank"><h3>Coursera</h3><img class="rounded-circle" src="{{url_for('static', filename='images/cours.png')}}" /></a></div><br>
+          <div class="col-sm"><a href="https://www.udemy.com/" target="_blank"><h3>Udemy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/udemy.png')}}" /></div><br>
+        </div>
+        <div class="w-100"></div><br><br>
+        <div class="row">
+          <div class="col-sm"><a href="https://www.codecademy.com/" target="_blank"><h3>Codecademy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/codecad.png')}}"/></a></div><br>
+          <div class="col-sm"><a href="https://www.freecodecamp.org/" target="_blank"><h3>FreeCodeCamp</h3><img class="rounded-circle" src="{{url_for('static', filename='images/freecc.png')}}" /></a></div><br>
+          <div class="col-sm"><a href="https://www.pluralsight.com/" target="_blank"><h3>Pluralsight</h3><img class="rounded-circle" src="{{url_for('static', filename='images/plu.png')}}" /></a></div><br>
+        </div>
       </div>
-      <div class="w-100"></div><br><br>
-      <div class="row">
-        <div class="col-sm"><a href="https://www.codecademy.com/" target="_blank"><h3>Codecademy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/codecad.png')}}"/></a></div><br>
-        <div class="col-sm"><a href="https://www.freecodecamp.org/" target="_blank"><h3>FreeCodeCamp</h3><img class="rounded-circle" src="{{url_for('static', filename='images/freecc.png')}}" /></a></div><br>
-        <div class="col-sm"><a href="https://www.pluralsight.com/" target="_blank"><h3>Pluralsight</h3><img class="rounded-circle" src="{{url_for('static', filename='images/plu.png')}}" /></a></div><br>
-      </div>
-    </div>
+  </section>
+
+<section id="wishes">
+  <div class="container text-center">
+      <h3>Happy <span class="rosa">Coding</span>!</h3>
+  </div>
 </section>
 
-<div class="container text-center">
-    <h3>Happy <span class="rosa">Coding</span>!</h3>
-</div>
-{% endblock content %}
+  <!-- Optional JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
