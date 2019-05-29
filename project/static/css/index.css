@@ -1,0 +1,39 @@
+body {
+  font-family: 'Questrial', sans-serif;
+  color: #333333;
+}
+.navbar {
+  background-color: rgba(35,35,35,0.95);
+}
+
+#index {
+    text-align:center;
+    /*background-image:url(http://localhost:5000/static/images/bg-1.jpg);*/
+    background-image:url("static/images/bg-1.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100%;
+    padding-top: 100px;
+    color: white;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2em;
+}
+#index h1 {
+  color: white;
+}
+#index .btn-info {
+  background-color: #c53540;
+  border: #c53540;
+}
+#bank {
+  padding-top: 30px;
+}
+#footer {
+left: 0;
+bottom: 0;
+background-color: none;
+color: #222;
+text-align: center;
+margin-top: 20px;
+}
