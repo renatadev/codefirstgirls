@@ -3,7 +3,10 @@ html {
 }
 
 body {
-  background: #fafafa;
+    background-image:url("static/images/bg-1.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100%;
   color: #818181;
   margin-top: 5rem;
 }
