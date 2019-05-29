@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
@@ -87,6 +89,9 @@
       #bank {
         padding: 100px;
       }
+      .heartBeat {
+        animation-duration: 10s;
+      }
       </style>
 </head>
 
@@ -143,7 +148,7 @@
         <br><h1>Welcome to CFG:Alumni</h1>
         <p>Register now and become part of our amazing community.</p>
         <p class="lead">
-          <a class="btn btn-info btn-lg " href="{{ url_for('register') }}" role="button">Join now</a>
+          <a class="btn btn-info btn-lg animated heartBeat delay-1s" href="{{ url_for('register') }}" role="button">Join now</a>
         </p><br><br><br><br>
     </div>
   </section>

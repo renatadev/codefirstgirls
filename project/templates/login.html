@@ -1,5 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
+<style type="text/css">
+  body {
+      /*background-image:url(http://localhost:5000/static/images/bg-1.jpg);*/
+      background-image:url("static/images/bg-1.jpg");
+      background-repeat:no-repeat;
+      background-size: cover;
+      height: 100%;
+      padding: 50px;
+  }
+  .content-section {
+    background-color: #fafafa;
+  }
+</style>
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-3"></div>
@@ -54,6 +67,5 @@
         </small>
     </div>
   </div>
-  <div class="col-md-3"></div>
 </div>
 {% endblock content %}

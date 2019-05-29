@@ -10,7 +10,7 @@
 
       gtag('config', 'UA-136830055-2');
     </script>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +18,8 @@
     <meta name="keywords" content="Code First Girls, Web Application, Flask, Python, Bank of America, CodeFirstAlumni, Alumni, Students, Learn to code">
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/minilogo.png') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -42,13 +44,12 @@
         background-image:url("static/images/fix1.jpg");
         background-repeat:no-repeat;
         background-size: cover;
-        height: 70%;
+        height: 100%;
         color: white;
         font-size: 26px;
         font-weight: 400;
         line-height: 1.2em;
-        padding-top: 150px;
-        padding-bottom: 100px;
+        padding-top: 200px;
         }
         #index h1 {
           font-size: 50px;
@@ -66,6 +67,9 @@
         }
         #resources-icons, #wishes {
           padding-top: 80px;
+        }
+        .bounceIn {
+          animation-duration: 3s;
         }
       </style>
 </head>
@@ -127,15 +131,15 @@
   <section id="resources-icons">
       <div class="container text-center">
         <div class="row">
-          <div class="col-sm"><a href="https://teamtreehouse.com/" target="_blank"><h3>Tree House</h3><img class="rounded-circle" src="{{url_for('static', filename='images/tree.png')}}"/></a></div><br>
-          <div class="col-sm"><a href="https://www.coursera.org/" target="_blank"><h3>Coursera</h3><img class="rounded-circle" src="{{url_for('static', filename='images/cours.png')}}" /></a></div><br>
-          <div class="col-sm"><a href="https://www.udemy.com/" target="_blank"><h3>Udemy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/udemy.png')}}" /></div><br>
+          <div class="col-sm animated bounceIn delay-2s"><a href="https://teamtreehouse.com/" target="_blank"><h3>Tree House</h3><img class="rounded-circle" src="{{url_for('static', filename='images/tree.png')}}"/></a></div><br>
+          <div class="col-sm animated bounceIn delay-2s"><a href="https://www.coursera.org/" target="_blank"><h3>Coursera</h3><img class="rounded-circle" src="{{url_for('static', filename='images/cours.png')}}" /></a></div><br>
+          <div class="col-sm animated bounceIn delay-2s"><a href="https://www.udemy.com/" target="_blank"><h3>Udemy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/udemy.png')}}" /></div><br>
         </div>
         <div class="w-100"></div><br><br>
         <div class="row">
-          <div class="col-sm"><a href="https://www.codecademy.com/" target="_blank"><h3>Codecademy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/codecad.png')}}"/></a></div><br>
-          <div class="col-sm"><a href="https://www.freecodecamp.org/" target="_blank"><h3>FreeCodeCamp</h3><img class="rounded-circle" src="{{url_for('static', filename='images/freecc.png')}}" /></a></div><br>
-          <div class="col-sm"><a href="https://www.pluralsight.com/" target="_blank"><h3>Pluralsight</h3><img class="rounded-circle" src="{{url_for('static', filename='images/plu.png')}}" /></a></div><br>
+          <div class="col-sm animated bounceIn delay-3s"><a href="https://www.codecademy.com/" target="_blank"><h3>Codecademy</h3><img class="rounded-circle" src="{{url_for('static', filename='images/codecad.png')}}"/></a></div><br>
+          <div class="col-sm animated bounceIn delay-3s"><a href="https://www.freecodecamp.org/" target="_blank"><h3>FreeCodeCamp</h3><img class="rounded-circle" src="{{url_for('static', filename='images/freecc.png')}}" /></a></div><br>
+          <div class="col-sm animated bounceIn delay-3s"><a href="https://www.pluralsight.com/" target="_blank"><h3>Pluralsight</h3><img class="rounded-circle" src="{{url_for('static', filename='images/plu.png')}}" /></a></div><br>
         </div>
       </div>
   </section>
