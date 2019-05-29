@@ -14,6 +14,10 @@ from flask_mail import Message
 def index():
     return render_template("index.html", title="Welcome Page")
 
+@app.route("/thankyou")
+def thankyou():
+    return render_template("thankyou.html", title="Thank you")
+
 @app.route("/home")
 @login_required
 def home():
