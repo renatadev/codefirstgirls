@@ -9,7 +9,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #61c9a4;
 }
 
 #index h1 {
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-title {
-  color: #444444;
+  color: #61c9a4;
 }
 
 a.article-title:hover {
@@ -63,7 +63,7 @@ a.article-title:hover {
 }
 
 .article-metadata a:hover {
-  color: #333;
+  color: #61c9a4;
   text-decoration: none;
 }
 
