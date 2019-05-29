@@ -26,6 +26,10 @@
       font-family: 'Questrial', sans-serif;
       color: #333333;
     }
+    .navbar {
+      background-color: rgba(35,35,35,0.95);
+    }
+
     #index {
         text-align:center;
         /*background-image:url(http://localhost:5000/static/images/bg-1.jpg);*/
@@ -66,7 +70,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
 
     <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container">
           <a class="navbar-brand" href="/">
             <img alt="CF:G" src="{{ url_for('static', filename='images/small-logo.png') }}" height="40"/>
