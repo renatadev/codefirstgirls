@@ -5,8 +5,8 @@ CFG:Alumni mission is to build and unify a community of Coding Girls with more e
 In our platform you'll be able to:
 
 - [x] Register and log in with your personal details.
-- [x] Your password will keep SECRET in our db.
 - [x] Create, update and delete posts.
+- [x] Leave comments and interact with other coders.
 - [x] Create your very own profile and even update your picture!
 - [x] Reach professionals instructors and past CF:G alumni to answer all your doubts and questions.
 - [x] Access to the best coding resources on-line.
@@ -20,4 +20,4 @@ This project was born as a result of developing a website as final project for *
 by *Renata Guerra.* Or as I'd say: Made by a CFGirl for CFGirls!
 
 
-You can find the book/guide [here.]()
+You can access the web app by clicking [here.](https://intense-mesa-48856.herokuapp.com/)
