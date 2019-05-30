@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg') #default image
     password = db.Column(db.String(60), nullable=False) #not unique because users can have the same password
     posts = db.relationship('Post', backref='author', lazy=True) # lazy=True loads the data from the db when necessary
+    #comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
@@ -43,6 +44,17 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) #coordinated universal time
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)#relationship to our user model
+    #comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return Post({self.title}, {self.date_posted})
+
+#class Comment(db.Model):
+#    __tablename__ = 'comments'
+#    id = db.Column(db.Integer, primary_key=True)
+#    body = db.Column(db.String(100), nullable=False)
+#    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+#    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
+
+    #def __repr__(self):
+    #    return Comment({self.body}, {self.timestamp})

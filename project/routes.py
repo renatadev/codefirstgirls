@@ -4,8 +4,8 @@ import requests
 from PIL import Image #Pillow package to resize our profile image before saving it
 from flask import render_template, url_for, flash, redirect, request, abort
 from project import app, db, bcrypt, mail
-from project.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
-from project.models import User, Post
+from project.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm #CommentForm
+from project.models import User, Post #Comment
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -121,6 +121,19 @@ def post(post_id):
     post = Post.query.get_or_404(post_id) #to get a post with ID otherwise we run the error page
     return render_template('post.html', title=post.title, post=post)
 
+#@app.route("/post/<int:post_id>/comment", methods=["GET", "POST"])
+#@login_required
+#def comment(post_id):
+#    post = Post.query.get_or_404(post_id)
+#    form = CommentForm()
+#    if request.method == 'POST': # this only gets executed when the form is submitted and not when the page loads
+#        if form.validate_on_submit():
+#            comment = Comment(body=form.body.data, article=post.id)
+#            db.session.add(comment)
+#            db.session.commit()
+#            flash("Your comment has been added to the post", "success")
+#            return redirect(url_for("post", post_id=post.id))
+#    return render_template("comment.html", title="Comments", form=form, post_id=post_id)
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
